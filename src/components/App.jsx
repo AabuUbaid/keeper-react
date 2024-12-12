@@ -3,19 +3,21 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
 import CreateArea from "./CreateArea";
+import './App.css'; // Ensure this is in your App.js
+
 
 function App() {
 
-  const [notes, setNotes]= React.useState([]);
+  const [notes, setNotes] = React.useState([]);
 
-  function addNote(newNote){
-    setNotes(prevNotes=>{
-     return [...prevNotes, newNote];
+  function addNote(newNote) {
+    setNotes(prevNotes => {
+      return [...prevNotes, newNote];
     });
   }
-  function deleteNote(id){
-    setNotes(prevNotes =>{
-      return prevNotes.filter((noteItem, index) =>{
+  function deleteNote(id) {
+    setNotes(prevNotes => {
+      return prevNotes.filter((noteItem, index) => {
         return index !== id;
       });
     });
@@ -25,12 +27,12 @@ function App() {
     <div>
       <Header />
       <CreateArea onAdd={addNote} />
-      {notes.map((noteItem, index) =>{
-        return <Note 
-        key={index} 
-        id={index}
-        title={noteItem.title} 
-        content={noteItem.content} 
+      {notes.map((noteItem, index) => {
+        return <Note
+          key={index}
+          id={index}
+          title={noteItem.title}
+          content={noteItem.content}
           onDelete={deleteNote}
         />
       })}
